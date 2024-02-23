@@ -1,0 +1,202 @@
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent !important;
+  }
+  ::-webkit-scrollbar-thumb {
+    width: 0;
+    background: transparent !important;
+  }
+
+  ion-menu {
+    display: none !important;
+  }
+
+  // Dashboard
+
+  app-dashboard {
+    .page_sec {
+      padding: 0 !important;
+
+      ion-header {
+        .header_container {
+          .settings_container {
+            .icon_container {
+              width: 40px;
+              height: 40px;
+
+              &:last-child {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+
+      ion-content {
+        .dashboard_container {
+          padding: 0 !important;
+          flex-direction: column;
+          overflow-y: scroll;
+
+          .projects_sec {
+            order: 1;
+
+            .grid {
+              padding-bottom: 145px !important;
+            }
+          }
+
+          .application_status_sec {
+            .status_counts_container {
+              display: none !important;
+              padding-bottom: 0 !important;
+              .status_container {
+                .status {
+                  width: 50px !important;
+                  height: 50px !important;
+                }
+                p {
+                  font-size: 12px !important;
+                }
+              }
+            }
+
+            .status_details_container {
+              flex-direction: row !important;
+              justify-content: center;
+              flex-wrap: wrap !important;
+              gap: 20px !important;
+              padding-bottom: 10px !important;
+
+              .status_detail_sec {
+                width: 45% !important;
+                box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                border-radius: 5px;
+                padding: 10px !important;
+
+                .icon_label {
+                  gap: 10px;
+                  align-items: center;
+                  justify-content: flex-start;
+                  flex-direction: row !important;
+                }
+
+                .desc {
+                  ul {
+                    padding: 10px !important;
+                    li {
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                      overflow: hidden;
+                    }
+                  }
+                }
+
+                &.status_applied {
+                  border-left: unset !important;
+                  border-top: 5px solid var(--status-applied-txt);
+                  padding-bottom: 5px;
+                }
+                &.status_in_progress {
+                  border-left: unset !important;
+                  border-top: 5px solid var(--status-in_progress-txt);
+                }
+                &.status_completed {
+                  border-left: unset !important;
+                  border-top: 5px solid var(--status-completed-txt);
+                }
+                &.status_cancelled {
+                  border-left: unset !important;
+                  border-top: 5px solid var(--status-cancelled-txt);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  app-filter {
+    .filter_container {
+      position: fixed;
+      transform: translate3d(0, 0, 0);
+      bottom: 0px;
+      width: 100%;
+      background: #fff;
+      height: 65px;
+      padding: 0 !important;
+      justify-content: space-around !important;
+
+      .dropdowns {
+        width: 63%;
+        gap: 10px !important;
+        margin-top: 20px;
+        overflow-x: scroll;
+      }
+    }
+  }
+
+  app-dropdown {
+    .dropdown {
+      min-width: 100px !important;
+    }
+  }
+}
+
+/* Tablet devices (portrait and landscape) */
+@media (max-width: 1023px) {
+  ::-webkit-scrollbar {
+    width: 0;
+    background: transparent !important;
+  }
+  ::-webkit-scrollbar-thumb {
+    width: 0;
+    background: transparent !important;
+  }
+
+  // Dashboard
+
+  app-dashboard {
+    ion-content {
+      .dashboard_container {
+        flex-direction: column;
+        overflow-y: scroll;
+
+        .projects_sec {
+          order: 1;
+        }
+
+        .application_status_sec {
+          .status_details_container {
+            flex-direction: row !important;
+            flex-wrap: wrap !important;
+            gap: 20px !important;
+            padding-bottom: 0 !important;
+
+            .status_detail_sec {
+              width: 48% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+  app-filter {
+    .filter_container {
+      position: fixed;
+      width: 100%;
+      background: #fff;
+      height: 65px;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .filter_container {
+    &.mobile {
+      display: none !important;
+    }
+  }
+}

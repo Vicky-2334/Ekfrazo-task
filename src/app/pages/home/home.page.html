@@ -1,0 +1,54 @@
+<ion-split-pane when="xs" contentId="main">
+  <ion-menu contentId="main" class="ion-padding" *ngIf="isWeb">
+    <div class="side_menu">
+      <div class="top_container">
+        <ion-thumbnail (click)="navToHome()">
+          <ion-img src="assets/img/brand_logo.png"></ion-img>
+        </ion-thumbnail>
+        <div
+          *ngFor="let menuItem of menuItems"
+          class="menu_item"
+          [ngClass]="{'active': menuItem.isActive}"
+          (click)="handleMenuClick(menuItem.redirect)"
+        >
+          <div class="menu_icon">
+            <ion-icon [src]="menuItem.icon"></ion-icon>
+          </div>
+          <ion-label>{{menuItem.name}}</ion-label>
+        </div>
+      </div>
+      <div class="footer_container">
+        <ion-thumbnail (click)="navToProfile()">
+          <ion-img src="assets/img/user_img.png"></ion-img>
+        </ion-thumbnail>
+      </div>
+    </div>
+  </ion-menu>
+
+  <div class="ion-page" id="main">
+    <ion-content>
+      <div id="container">
+        <ion-router-outlet />
+      </div>
+    </ion-content>
+    <ion-footer>
+      <div class="footer">
+        <div class="footer_menu" *ngIf="!isWeb">
+          <div
+            *ngFor="let menuItem of menuItems"
+            class="menu_item"
+            [ngClass]="{'active': menuItem.isActive}"
+            (click)="handleMenuClick(menuItem.redirect)"
+          >
+            <div class="menu_icon">
+              <ion-icon [src]="menuItem.icon"></ion-icon>
+            </div>
+          </div>
+          <ion-thumbnail (click)="navToProfile()">
+            <ion-img src="assets/img/user_img.png"></ion-img>
+          </ion-thumbnail>
+        </div>
+      </div>
+    </ion-footer>
+  </div>
+</ion-split-pane>

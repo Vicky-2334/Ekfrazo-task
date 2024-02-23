@@ -1,0 +1,41 @@
+<ion-card class="project_card" *ngIf="projectDetail">
+  <div class="project_img_contrainer">
+    <div class="img_contrainer">
+      <ion-img
+        class="project_img"
+        [alt]="projectDetail.title"
+        [src]="projectDetail.img"
+      ></ion-img>
+
+      <div class="folded_ribbon">
+        {{projectDetail.countryName}}
+      </div>
+    </div>
+    <ion-button class="apply_btn">Apply Now</ion-button>
+  </div>
+
+  <ion-card-header class="ion-no-padding ion-text-wrap">
+    <ion-card-title>
+      {{projectDetail.title}}
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content class="ion-no-padding">
+    <div class="project_course_details">
+      <p class="course_txt">
+        Courses
+      </p>
+      <div class="course_details">
+        <p class="courses">
+          {{projectDetail.courses.join(', ')}}
+        </p>
+        <div class="duration_sec">
+          <ion-icon class="clock_icon" name="time-outline"></ion-icon>
+          <h5>
+            {{projectDetail.duration}}
+          </h5>
+        </div>
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>

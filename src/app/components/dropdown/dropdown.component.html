@@ -1,0 +1,16 @@
+<div class="dropdown">
+  <ion-select
+    toggleIcon="chevron-down-outline"
+    interface="popover"
+    [value]="value"
+    [placeholder]="placeholder"
+    (ionChange)="handleOnSelect($any($event))"
+  >
+    <ion-select-option
+      *ngFor="let option of options; trackBy:trackByFn"
+      [value]="option[trackBy]"
+    >
+      {{option[showBy]}}
+    </ion-select-option>
+  </ion-select>
+</div>

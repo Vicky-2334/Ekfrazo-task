@@ -1,0 +1,103 @@
+.project_card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 420px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  padding: 15px;
+  border-radius: 10px;
+  justify-content: space-between;
+  min-height: 310px;
+
+  .project_img_contrainer {
+    position: relative;
+    min-height: 150px;
+
+    .img_contrainer {
+      position: relative;
+      .project_img {
+        border-radius: 5px;
+      }
+      .folded_ribbon {
+        --f: 11px;
+        --r: 0;
+        position: absolute;
+        top: 10px;
+        padding-inline: 15px;
+        background: #00c382;
+        border-bottom: var(--f) solid rgb(0 0 0 / 30%);
+        color: #fff;
+        line-height: 18px;
+        font-size: 12px;
+        right: calc(-1 * var(--f));
+        clip-path: polygon(
+          0 0,
+          100% 0,
+          100% calc(100% - var(--f)),
+          calc(100% - var(--f)) 100%,
+          calc(100% - var(--f)) calc(100% - var(--f)),
+          0 calc(100% - var(--f)),
+          var(--r) calc(50% - var(--f) / 2)
+        );
+        border-radius: 4px;
+      }
+    }
+    .apply_btn {
+      --background: #0060b8b2 !important;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 0;
+      margin: 0;
+      font-size: 12px;
+      &::part(native) {
+        height: 38px;
+      }
+    }
+  }
+
+  ion-card-title {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .project_course_details {
+    display: flex;
+    flex-direction: column;
+
+    .course_details {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+
+      .course_txt {
+        color: var(--ion-color-step-550);
+      }
+
+      .courses,
+      h5 {
+        color: #000;
+      }
+      .courses {
+        font-weight: 600;
+        flex: 2;
+      }
+
+      .duration_sec {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        width: 130px;
+        flex: 1;
+        height: 100%;
+        justify-content: flex-end;
+
+        .clock_icon {
+          color: var(--ion-color-step-550);
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}

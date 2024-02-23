@@ -1,0 +1,122 @@
+<div class="page_sec" id="dashboard">
+  <ion-header [translucent]="true" class="ion-no-border">
+    <ion-toolbar>
+      <div class="header_container">
+        <ion-thumbnail *ngIf="!isWeb" (click)="navToHome()">
+          <ion-img src="assets/img/brand_logo.png"></ion-img>
+        </ion-thumbnail>
+        <app-filter
+          *ngIf="isWeb"
+          [isFilterApplied]="isFilterApplied"
+          [countries]="countries"
+          [courses]="courses"
+          [skills]="skills"
+          [durations]="durations"
+          (onFilter)="handleFilter($event)"
+          (onResetFilter)="removeFilters()"
+        ></app-filter>
+
+        <div class="settings_container">
+          <div class="icon_container nav_icon">
+            <ion-icon src="assets/svg/nav_theme_mode.svg"></ion-icon>
+          </div>
+          <div class="icon_container nav_icon">
+            <ion-icon src="assets/svg/nav_desktop.svg"></ion-icon>
+          </div>
+          <div class="icon_container nav_icon">
+            <ion-icon src="assets/svg/nav_translate.svg"></ion-icon>
+          </div>
+          <div class="icon_container nav_icon">
+            <ion-icon src="assets/svg/nav_notification.svg"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div class="dashboard_container">
+      <ng-container *ngIf="!loading">
+        <div class="main_container projects_sec">
+          <div class="header_content">
+            <div class="title_sec">
+              <ion-icon src="assets/svg/projects.svg"></ion-icon>
+              <h2>Projects</h2>
+            </div>
+
+            <ion-icon
+              *ngIf="!isWeb"
+              class="arrow_icon"
+              name="chevron-forward-outline"
+            ></ion-icon>
+          </div>
+
+          <div class="grid" *ngIf="projects.length; else noProjects">
+            <div class="row">
+              <div
+                class="col"
+                *ngFor="let project of projects; trackBy:trackByFn"
+              >
+                <app-project-card [projectDetail]="project"></app-project-card>
+              </div>
+            </div>
+          </div>
+
+          <ng-template #noProjects>
+            <div class="no_project">
+              <h2>No Projects Found</h2>
+            </div>
+          </ng-template>
+        </div>
+        <div class="main_container application_status_sec">
+          <div class="title_sec">
+            <ion-icon src="assets/svg/application_status.svg"></ion-icon>
+            <h2>Application Status</h2>
+          </div>
+          <div class="status_counts_container">
+            <div
+              class="status_container"
+              *ngFor="let projectStatus of projectStatusStat"
+            >
+              <div class="status" [ngClass]="projectStatus.class">
+                <p class="status_txt">
+                  {{projectStatus.count}}
+                </p>
+              </div>
+              <p class="label">{{projectStatus.label}}</p>
+            </div>
+          </div>
+
+          <div class="status_details_container">
+            <ng-container *ngFor="let stat of projectStatusStat">
+              <div class="status_detail_sec" [ngClass]="stat.class">
+                <div class="icon_label">
+                  <ion-icon [name]="stat.icon"></ion-icon>
+                  <ion-label>{{stat.label}}</ion-label>
+                </div>
+                <!-- *ngIf="stat.count" -->
+                <div class="desc">
+                  <ul>
+                    <li *ngFor="let course of stat.courses; let i = index">
+                      {{(isWeb ? (i+1 + '. ') : "") + course}}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </ion-content>
+</div>
+<app-filter
+  *ngIf="!isWeb"
+  [isFilterApplied]="isFilterApplied"
+  [countries]="countries"
+  [courses]="courses"
+  [skills]="skills"
+  [durations]="durations"
+  (onFilter)="handleFilter($event)"
+  (onResetFilter)="removeFilters()"
+></app-filter>

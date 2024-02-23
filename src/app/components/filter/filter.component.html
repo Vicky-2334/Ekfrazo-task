@@ -1,0 +1,46 @@
+<div class="filter_container" [ngClass]="{'mobile': !isWeb}">
+  <div class="icon_container filter_icon no_background">
+    <ion-icon src="assets/svg/filter.svg"></ion-icon>
+  </div>
+
+  <div class="dropdowns">
+    <app-dropdown
+      [options]="skills"
+      [trackBy]="'id'"
+      [showBy]="'skill'"
+      [placeholder]="'Skill'"
+      (onSelect)="handleFilter($event, filterType.Skill)"
+    ></app-dropdown>
+    <app-dropdown
+      [options]="courses"
+      [trackBy]="'id'"
+      [showBy]="'course'"
+      [placeholder]="'Course'"
+      (onSelect)="handleFilter($event, filterType.Course)"
+    ></app-dropdown>
+    <app-dropdown
+      [options]="durations"
+      [trackBy]="'id'"
+      [showBy]="'duration'"
+      [placeholder]="'Time Commitment'"
+      (onSelect)="handleFilter($event, filterType.Duration)"
+    ></app-dropdown>
+    <app-dropdown
+      [options]="countries"
+      [trackBy]="'id'"
+      [showBy]="'name'"
+      [placeholder]="'Country'"
+      (onSelect)="handleFilter($event, filterType.Country)"
+    ></app-dropdown>
+  </div>
+  <div class="icon_container search_icon">
+    <ion-icon name="search-outline"></ion-icon>
+  </div>
+  <div
+    class="icon_container search_icon"
+    *ngIf="false && isFilterApplied"
+    (click)="handleResetFilter()"
+  >
+    <ion-icon name="close-outline"></ion-icon>
+  </div>
+</div>
