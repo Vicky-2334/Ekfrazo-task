@@ -14,14 +14,12 @@ export class AppComponent implements OnInit {
   }
 
   private setCurrentPlatform() {
-    if (
-      this.platform.is("ios") ||
-      (this.platform.is("android") &&
-        !(this.platform.is("desktop") || this.platform.is("mobileweb")))
-    ) {
-      BASE_CONFIG.IS_WEB = false;
-    } else {
-      BASE_CONFIG.IS_WEB = true;
-    }
+    this.platform.ready().then(() => {
+      if (this.platform.is("android") || this.platform.is("ios")) {
+        BASE_CONFIG.IS_WEB = false;
+      } else {
+        BASE_CONFIG.IS_WEB = true;
+      }
+    });
   }
 }

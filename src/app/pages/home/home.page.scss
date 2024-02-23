@@ -27,6 +27,7 @@ ion-menu {
 .side_menu,
 .footer_menu {
   ion-thumbnail {
+    --size: 35px !important;
     ion-img {
       border-radius: 5px;
     }

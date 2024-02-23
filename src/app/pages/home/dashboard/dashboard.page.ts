@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { RefresherCustomEvent } from "@ionic/angular";
 import {
   countries,
   courses,
@@ -226,6 +227,14 @@ export class DashboardPage implements OnInit {
   }
 
   navToHome() {
-    this.router.navigate([ROUTE.HOME]);
+    this.router.navigate([ROUTE.DASHBOARD]);
+  }
+
+  handleRefresh(event: RefresherCustomEvent) {
+    setTimeout(async () => {
+      await this.removeFilters();
+
+      event.target.complete();
+    }, 2000);
   }
 }

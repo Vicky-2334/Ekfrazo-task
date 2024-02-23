@@ -47,7 +47,7 @@ export class HomePage implements OnInit {
   }
 
   navToHome() {
-    this.router.navigate([ROUTE.HOME]);
+    this.router.navigate([ROUTE.DASHBOARD]);
   }
 
   navToProfile() {

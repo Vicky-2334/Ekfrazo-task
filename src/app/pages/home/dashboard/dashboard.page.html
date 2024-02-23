@@ -35,6 +35,10 @@
   </ion-header>
 
   <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($any($event))">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
     <div class="dashboard_container">
       <ng-container *ngIf="!loading">
         <div class="main_container projects_sec">
